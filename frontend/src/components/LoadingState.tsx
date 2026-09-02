@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Loader2, CheckCircle2, XCircle, Bot, Cpu, GitMerge, ShieldCheck } from 'lucide-react';
+import { Loader2, Check, X, FileText, Cpu, GitMerge, ShieldCheck } from 'lucide-react';
 
 interface LoadingStateProps {
   onCancel?: () => void;
@@ -7,28 +7,28 @@ interface LoadingStateProps {
 
 const PIPELINE_STEPS = [
   {
-    icon: Bot,
-    label: 'Extracting Travel Constraints',
-    desc: 'Parsing natural language into structured target region, duration, budget, and preference tags.',
-    duration: 1500,
+    icon: FileText,
+    label: 'EXTRACT',
+    title: 'Extracting Travel Constraints',
+    desc: 'Parsing natural language into target region, duration, budget, and preference tags.',
   },
   {
     icon: Cpu,
-    label: 'Parallel Specialist Agents',
+    label: 'SPECIALISTS',
+    title: 'Parallel Specialist Agents',
     desc: 'Destination, Logistics, and Budget agents executing specialist sub-tasks concurrently.',
-    duration: 3000,
   },
   {
     icon: GitMerge,
-    label: 'Orchestrator Synthesis & Merge',
+    label: 'SYNTHESIS',
+    title: 'Orchestrator Synthesis & Merge',
     desc: 'Resolving destination slots, lodging night allocations, and cost totals into a cohesive draft.',
-    duration: 2000,
   },
   {
     icon: ShieldCheck,
-    label: 'Quality Gate Review & Repair Loop',
-    desc: 'Verifying time realism, budget bounds, city coverage, and applying automated repairs if needed.',
-    duration: 2500,
+    label: 'REVIEW',
+    title: 'Quality Gate & Repair Loop',
+    desc: 'Verifying time realism, budget bounds, city coverage, and executing bounded repairs if needed.',
   },
 ];
 
@@ -49,74 +49,85 @@ export const LoadingState: React.FC<LoadingStateProps> = ({ onCancel }) => {
   }, []);
 
   return (
-    <div className="glass-card animate-fade-in" style={{ padding: '3rem 2rem', textAlign: 'center', marginBottom: '2.5rem' }}>
-      <div style={{ display: 'inline-flex', padding: '1rem', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', marginBottom: '1.5rem' }}>
-        <Loader2 size={36} color="var(--accent-blue)" style={{ animation: 'spin 1.5s linear infinite' }} />
+    <div className="board-housing" style={{ padding: '2.5rem 2rem', marginBottom: '2.5rem' }}>
+      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+        <div style={{
+          display: 'inline-flex',
+          padding: '0.85rem',
+          background: '#080C14',
+          border: '1px solid var(--amber-500)',
+          borderRadius: '50%',
+          marginBottom: '1rem'
+        }}>
+          <Loader2 size={32} color="var(--amber-500)" style={{ animation: 'spin 1.5s linear infinite' }} />
+        </div>
+
+        <style>{`
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+        `}</style>
+
+        <h3 className="board-font" style={{ fontSize: '1.35rem', fontWeight: 700, color: '#F8FAFC', marginBottom: '0.35rem' }}>
+          STATION PIPELINE IN PROGRESS
+        </h3>
+        <p style={{ color: '#94A3B8', maxWidth: '520px', margin: '0 auto', fontSize: '0.95rem' }}>
+          Specialist agents are routing through station nodes: analyzing catalogs, building transit matrices, and auditing quality rules.
+        </p>
       </div>
 
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
-
-      <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-        Orchestrating Multi-Agent Travel Plan
-      </h3>
-      <p style={{ color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 2.5rem', fontSize: '0.95rem' }}>
-        Specialist agents are analyzing destination catalogs, optimizing inter-city logistics, calculating budget breakdowns, and validating quality rules.
-      </p>
-
-      {/* Pipeline Steps */}
-      <div style={{ maxWidth: '640px', margin: '0 auto', textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      {/* Station Line Pipeline Diagram */}
+      <div className="station-pipeline" style={{ maxWidth: '680px', margin: '0 auto' }}>
         {PIPELINE_STEPS.map((step, idx) => {
-          const StepIcon = step.icon;
           const isDone = idx < currentStepIndex;
           const isActive = idx === currentStepIndex;
 
           return (
             <div
               key={idx}
-              style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '1rem',
-                padding: '1rem 1.25rem',
-                borderRadius: 'var(--radius-md)',
-                backgroundColor: isActive
-                  ? 'rgba(56, 189, 248, 0.08)'
-                  : isDone
-                  ? 'rgba(16, 185, 129, 0.05)'
-                  : 'rgba(255, 255, 255, 0.02)',
-                border: `1px solid ${
-                  isActive
-                    ? 'rgba(56, 189, 248, 0.3)'
-                    : isDone
-                    ? 'rgba(16, 185, 129, 0.2)'
-                    : 'rgba(255, 255, 255, 0.05)'
-                }`,
-                transition: 'all 0.3s ease',
-              }}
+              className={`station-track ${isActive || isDone ? 'active' : ''}`}
             >
-              <div style={{ marginTop: '2px' }}>
+              <div className={`station-node ${isDone ? 'done' : isActive ? 'active' : ''}`}>
                 {isDone ? (
-                  <CheckCircle2 size={20} color="var(--accent-emerald)" />
+                  <Check size={12} color="#0E1524" strokeWidth={3} />
                 ) : isActive ? (
-                  <Loader2 size={20} color="var(--accent-blue)" style={{ animation: 'spin 1.5s linear infinite' }} />
-                ) : (
-                  <StepIcon size={20} color="var(--text-muted)" />
-                )}
+                  <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#0E1524' }} />
+                ) : null}
               </div>
-              <div style={{ flex: 1 }}>
-                <div style={{
-                  fontSize: '0.95rem',
-                  fontWeight: 600,
-                  color: isActive ? 'var(--accent-blue)' : isDone ? 'var(--text-primary)' : 'var(--text-muted)'
-                }}>
-                  Step {idx + 1}: {step.label}
+
+              <div style={{
+                background: '#080C14',
+                border: `1px solid ${isActive ? 'var(--teal-500)' : isDone ? 'rgba(63, 167, 160, 0.4)' : 'var(--ink-600)'}`,
+                borderRadius: 'var(--radius-md)',
+                padding: '1rem 1.25rem',
+                transition: 'all 0.3s ease'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+                  <div className="board-font" style={{
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    color: isActive ? 'var(--amber-500)' : isDone ? 'var(--teal-500)' : '#64748B',
+                    letterSpacing: '0.08em'
+                  }}>
+                    STATION {idx + 1} // {step.label}
+                  </div>
+                  {isActive && (
+                    <span className="board-flap" style={{ fontSize: '0.7rem' }}>
+                      PROCESSING
+                    </span>
+                  )}
+                  {isDone && (
+                    <span style={{ fontSize: '0.75rem', color: 'var(--teal-500)', fontFamily: 'var(--font-board)', fontWeight: 600 }}>
+                      CLEARED
+                    </span>
+                  )}
                 </div>
-                <div style={{ fontSize: '0.825rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+
+                <div className="board-font" style={{ fontSize: '1rem', fontWeight: 600, color: '#F8FAFC', marginBottom: '0.25rem' }}>
+                  {step.title}
+                </div>
+                <div style={{ fontSize: '0.875rem', color: '#94A3B8' }}>
                   {step.desc}
                 </div>
               </div>
@@ -126,12 +137,13 @@ export const LoadingState: React.FC<LoadingStateProps> = ({ onCancel }) => {
       </div>
 
       {onCancel && (
-        <div style={{ marginTop: '2rem' }}>
-          <button type="button" onClick={onCancel} className="btn-secondary">
-            <XCircle size={16} /> Cancel Generation
+        <div style={{ textAlign: 'center', marginTop: '2.25rem' }}>
+          <button type="button" onClick={onCancel} className="btn-terminal">
+            <X size={15} /> ABORT DISPATCH
           </button>
         </div>
       )}
     </div>
   );
 };
+

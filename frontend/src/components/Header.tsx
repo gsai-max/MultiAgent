@@ -1,41 +1,68 @@
 import React from 'react';
-import { Compass, Sparkles, ShieldCheck } from 'lucide-react';
+import { Compass, Radio, ShieldCheck } from 'lucide-react';
 
 export const Header: React.FC = () => {
   return (
-    <header style={{ padding: '1.75rem 0', borderBottom: '1px solid var(--border-color)', marginBottom: '2.5rem' }}>
+    <header style={{
+      background: 'var(--ink-700)',
+      borderBottom: '1px solid var(--ink-600)',
+      padding: '1.25rem 0',
+      marginBottom: '2rem'
+    }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
           <div style={{
-            background: 'linear-gradient(135deg, var(--accent-blue), var(--accent-indigo))',
-            padding: '0.65rem',
-            borderRadius: 'var(--radius-md)',
+            background: 'var(--ink-900)',
+            border: '1px solid var(--amber-500)',
+            padding: '0.5rem',
+            borderRadius: 'var(--radius-sm)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 15px rgba(56, 189, 248, 0.3)'
+            justifyContent: 'center'
           }}>
-            <Compass size={28} color="#ffffff" />
+            <Compass size={24} color="var(--amber-500)" />
           </div>
           <div>
-            <h1 style={{ fontSize: '1.65rem', fontWeight: 800, margin: 0, background: 'linear-gradient(90deg, #ffffff, #94a3b8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              AI Travel Planner
+            <h1 style={{ fontSize: '1.35rem', fontWeight: 700, margin: 0, color: '#F8FAFC', fontFamily: 'var(--font-board)' }}>
+              AI TRAVEL TERMINAL
             </h1>
-            <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', margin: 0 }}>
-              Multi-Agent Autonomous Itinerary Orchestration Engine
+            <p style={{ fontSize: '0.8rem', color: '#94A3B8', margin: 0, fontFamily: 'var(--font-board)', letterSpacing: '0.04em' }}>
+              MULTI-AGENT DEPARTURE & ITINERARY ORCHESTRATOR
             </p>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span className="badge badge-cyan">
-            <Sparkles size={13} /> Multi-Agent Engine v1.0
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontFamily: 'var(--font-board)', fontSize: '0.8rem' }}>
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            background: '#080C14',
+            color: 'var(--teal-500)',
+            border: '1px solid rgba(63, 167, 160, 0.4)',
+            padding: '0.3rem 0.75rem',
+            borderRadius: 'var(--radius-sm)',
+            fontWeight: 600
+          }}>
+            <Radio size={12} /> ENGINE v1.0 ONLINE
           </span>
-          <span className="badge badge-emerald">
-            <ShieldCheck size={13} /> Quality Gate Active
+
+          <span style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            background: '#080C14',
+            color: 'var(--amber-500)',
+            border: '1px solid rgba(232, 162, 61, 0.4)',
+            padding: '0.3rem 0.75rem',
+            borderRadius: 'var(--radius-sm)',
+            fontWeight: 600
+          }}>
+            <ShieldCheck size={12} /> QUALITY GATE ACTIVE
           </span>
         </div>
       </div>
     </header>
   );
 };
+

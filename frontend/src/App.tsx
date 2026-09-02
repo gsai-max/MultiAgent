@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Header } from './components/Header';
+import { DepartureBoardHero } from './components/DepartureBoardHero';
 import { RequestForm } from './components/RequestForm';
 import { LoadingState } from './components/LoadingState';
 import { ErrorAlert } from './components/ErrorAlert';
@@ -56,17 +57,20 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: 'var(--ink-900)' }}>
       <Header />
 
       <main style={{ flex: 1, paddingBottom: '4rem' }}>
         <div className="container">
-          {/* Always show request form when idle, error, or loading */}
+          {/* Departure Board Hero (shown when not viewing final success result) */}
+          {status !== 'success' && <DepartureBoardHero />}
+
+          {/* Request Form (Boarding Pass Card) */}
           {status !== 'success' && (
             <RequestForm onSubmit={handleGeneratePlan} isLoading={status === 'loading'} />
           )}
 
-          {/* Loading state visualizer */}
+          {/* Loading state visualizer (Station Line) */}
           {status === 'loading' && (
             <LoadingState onCancel={handleCancel} />
           )}
@@ -84,14 +88,17 @@ export const App: React.FC = () => {
       </main>
 
       <footer style={{
-        borderTop: '1px solid var(--border-color)',
-        padding: '1.5rem 0',
+        background: 'var(--ink-700)',
+        borderTop: '1px solid var(--ink-600)',
+        padding: '1.25rem 0',
         textAlign: 'center',
-        color: 'var(--text-muted)',
-        fontSize: '0.85rem'
+        color: '#94A3B8',
+        fontFamily: 'var(--font-board)',
+        fontSize: '0.8rem',
+        letterSpacing: '0.04em'
       }}>
         <div className="container">
-          AI Travel Planner &copy; {new Date().getFullYear()} — Multi-Agent Travel Orchestration Engine (Phase 9 Active)
+          AI TRAVEL TERMINAL &copy; {new Date().getFullYear()} — MULTI-AGENT ORCHESTRATION ENGINE // ALL RIGHTS RESERVED
         </div>
       </footer>
     </div>
@@ -99,3 +106,4 @@ export const App: React.FC = () => {
 };
 
 export default App;
+
