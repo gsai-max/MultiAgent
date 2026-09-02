@@ -1,6 +1,6 @@
 import { PlanFinalResponse, PlanApiError } from '../types/itinerary';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
 
 export async function generatePlan(
   requestText: string,
@@ -18,10 +18,21 @@ export async function generatePlan(
       signal,
     });
 
-    const data = await response.json();
+    let data: any = {};
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      try {
+        data = await response.json();
+      } catch (jsonErr) {
+        data = {};
+      }
+    } else {
+      const textResponse = await response.text();
+      data = { message: textResponse || response.statusText };
+    }
 
     if (!response.ok) {
-      const errorDetail = data?.detail || data?.message || 'Failed to generate itinerary plan';
+      const errorDetail = data?.detail || data?.message || `API server returned status ${response.status}`;
       const apiError: PlanApiError = {
         message: typeof errorDetail === 'string' ? errorDetail : JSON.stringify(errorDetail),
         status_code: response.status,
