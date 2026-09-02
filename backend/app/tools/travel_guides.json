@@ -1,0 +1,43 @@
+{
+  "Japan": {
+    "Tokyo": {
+      "neighborhoods": ["Shibuya", "Shinjuku", "Asakusa", "Ginza", "Akihabara", "Ueno"],
+      "must_do": ["Sensō-ji Temple", "Shibuya Crossing", "Meiji Shrine", "Tsukiji Outer Market", "TeamLab Planets"],
+      "hidden_gems": ["Yanaka Ginza", "Kagurazaka", "Todoroki Valley", "Nezu Museum"],
+      "crowd_tips": "Visit Sensō-ji before 8:00 AM or after 7:00 PM for low crowd levels.",
+      "food_highlights": ["Ramen Alley Shinjuku", "Tsukiji Fresh Sushi", "Monjayaki in Tsukishima"]
+    },
+    "Kyoto": {
+      "neighborhoods": ["Gion", "Arashiyama", "Higashiyama", "Downtown Kyoto"],
+      "must_do": ["Fushimi Inari Taisha", "Kinkaku-ji (Golden Pavilion)", "Kiyomizu-dera", "Arashiyama Bamboo Grove"],
+      "hidden_gems": ["Gio-ji Moss Garden", "Philosopher's Path in autumn", "Oharano Shrine"],
+      "crowd_tips": "Hike upper Fushimi Inari loops past the Yotsutsuji intersection to avoid tourist crowds.",
+      "food_highlights": ["Nishiki Market Street Food", "Kyoto Style Kaiseki", "Matcha Parfaits in Uji"]
+    }
+  },
+  "France": {
+    "Paris": {
+      "neighborhoods": ["Le Marais", "Montmartre", "Saint-Germain-des-Prés", "Latin Quarter"],
+      "must_do": ["Eiffel Tower", "Louvre Museum", "Musée d'Orsay", "Notre-Dame Cathedral", "Sainte-Chapelle"],
+      "hidden_gems": ["Musée Carnavalet", "Promenade Plantée", "Palais-Royal Gardens"],
+      "crowd_tips": "Book Louvre evening tickets on Wednesdays/Fridays for significantly shorter lines.",
+      "food_highlights": ["Fresh Croissants at Du Pain et des Idées", "Bistro dining in Le Marais", "Macarons at Pierre Hermé"]
+    }
+  },
+  "Italy": {
+    "Rome": {
+      "neighborhoods": ["Trastevere", "Centro Storico", "Monti", "Prati"],
+      "must_do": ["Colosseum & Roman Forum", "Vatican Museums & Sistine Chapel", "Pantheon", "Trevi Fountain"],
+      "hidden_gems": ["Quartiere Coppedè", "Aventine Keyhole", "Galleria Doria Pamphilj"],
+      "crowd_tips": "Visit Trevi Fountain before 7:30 AM for peaceful photos.",
+      "food_highlights": ["Carbonara at Da Enzo", "Suppli street food in Trastevere", "Gelato at Giolitti"]
+    },
+    "Florence": {
+      "neighborhoods": ["Duomo / San Giovanni", "Oltrarno", "Santa Croce", "San Marco"],
+      "must_do": ["Uffizi Gallery", "Florence Cathedral (Duomo)", "Accademia Gallery (David)", "Ponte Vecchio"],
+      "hidden_gems": ["Bardini Gardens", "San Miniato al Monte", "Mercato Sant'Ambrogio"],
+      "crowd_tips": "Cross the Arno River to Oltrarno for authentic craftsman shops and fewer tour groups.",
+      "food_highlights": ["Bistecca alla Fiorentina", "Schiacciata sandwiches at All'Antico Vinaio", "Lampredotto"]
+    }
+  }
+}

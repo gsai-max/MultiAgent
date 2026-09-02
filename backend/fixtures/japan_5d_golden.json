@@ -1,0 +1,281 @@
+{
+  "constraints": {
+    "destination_region": "Japan",
+    "cities": ["Tokyo", "Kyoto"],
+    "duration_days": 5,
+    "budget_total": 3000.0,
+    "currency": "USD",
+    "preferences": ["temples", "ramen", "neighborhood strolls"],
+    "avoidances": ["extreme rush hour", "overly crowded tourist traps"],
+    "hard_requirements": ["visit Fushimi Inari", "stay in central neighborhoods"],
+    "soft_preferences": ["try matcha tea ceremony"]
+  },
+  "activity_catalog": {
+    "activities": [
+      {
+        "id": "act_tokyo_01",
+        "city": "Tokyo",
+        "name": "Senso-ji Temple & Asakusa Stroll",
+        "category": "temple",
+        "estimated_duration_hours": 2.5,
+        "crowd_level": "medium",
+        "cost_band": "$",
+        "estimated_cost": 15.0,
+        "must_do": true,
+        "rationale": "Historic temple matching temple preference in quiet morning hours"
+      },
+      {
+        "id": "act_tokyo_02",
+        "city": "Tokyo",
+        "name": "Yanaka Ginza Neighborhood Walk & Local Ramen",
+        "category": "food",
+        "estimated_duration_hours": 3.0,
+        "crowd_level": "low",
+        "cost_band": "$$",
+        "estimated_cost": 35.0,
+        "must_do": false,
+        "rationale": "Authentic ramen and low-crowd retro neighborhood walk"
+      },
+      {
+        "id": "act_kyoto_01",
+        "city": "Kyoto",
+        "name": "Fushimi Inari Shrine Early Morning Visit",
+        "category": "temple",
+        "estimated_duration_hours": 3.0,
+        "crowd_level": "low",
+        "cost_band": "$",
+        "estimated_cost": 0.0,
+        "must_do": true,
+        "rationale": "Hard requirement visit scheduled early morning to avoid crowds"
+      },
+      {
+        "id": "act_kyoto_02",
+        "city": "Kyoto",
+        "name": "Arashiyama Bamboo Grove & Tenryu-ji",
+        "category": "nature",
+        "estimated_duration_hours": 3.5,
+        "crowd_level": "medium",
+        "cost_band": "$$",
+        "estimated_cost": 25.0,
+        "must_do": false,
+        "rationale": "Scenic nature walk with temple garden"
+      }
+    ],
+    "notes_by_city": {
+      "Tokyo": "Focus on Yanaka and Asakusa for traditional charm without Shibuya chaos.",
+      "Kyoto": "Early morning starts recommended for Fushimi Inari and Arashiyama."
+    }
+  },
+  "lodging_plan": {
+    "nights_per_city": {
+      "Tokyo": 2,
+      "Kyoto": 2
+    },
+    "suggested_neighborhoods": {
+      "Tokyo": ["Asakusa", "Ueno"],
+      "Kyoto": ["Gion", "Higashiyama"]
+    },
+    "options": [
+      {
+        "id": "lodg_tokyo_01",
+        "city": "Tokyo",
+        "neighborhood": "Asakusa",
+        "name": "Asakusa Boutique Hotel",
+        "estimated_cost_per_night": 140.0,
+        "currency": "USD"
+      },
+      {
+        "id": "lodg_kyoto_01",
+        "city": "Kyoto",
+        "neighborhood": "Gion",
+        "name": "Gion Traditional Machiya Stay",
+        "estimated_cost_per_night": 180.0,
+        "currency": "USD"
+      }
+    ]
+  },
+  "movement_plan": {
+    "inter_city_mode": "Shinkansen",
+    "transfers": [
+      {
+        "from_city": "Tokyo",
+        "to_city": "Kyoto",
+        "mode": "Shinkansen Nozomi",
+        "duration_minutes": 135,
+        "estimated_cost": 130.0
+      }
+    ]
+  },
+  "day_skeleton": [
+    {
+      "day_number": 1,
+      "city": "Tokyo",
+      "slots": [
+        {
+          "slot_id": "d1_s1",
+          "time_of_day": "afternoon",
+          "activity_id": "act_tokyo_01",
+          "activity_name": "Senso-ji Temple & Asakusa Stroll",
+          "travel_time_from_prev_minutes": 0,
+          "notes": "Check in to Asakusa hotel and stroll around Senso-ji"
+        },
+        {
+          "slot_id": "d1_s2",
+          "time_of_day": "evening",
+          "activity_id": "act_tokyo_02",
+          "activity_name": "Yanaka Ginza Neighborhood Walk & Local Ramen",
+          "travel_time_from_prev_minutes": 20,
+          "notes": "Relaxed evening ramen dinner"
+        }
+      ]
+    },
+    {
+      "day_number": 2,
+      "city": "Tokyo",
+      "slots": [
+        {
+          "slot_id": "d2_s1",
+          "time_of_day": "morning",
+          "activity_id": null,
+          "activity_name": "Tsukiji Outer Market Food Exploration",
+          "travel_time_from_prev_minutes": 25,
+          "notes": "Fresh seafood breakfast"
+        }
+      ]
+    },
+    {
+      "day_number": 3,
+      "city": "Kyoto",
+      "slots": [
+        {
+          "slot_id": "d3_s1",
+          "time_of_day": "morning",
+          "activity_id": null,
+          "activity_name": "Shinkansen Transit Tokyo -> Kyoto",
+          "travel_time_from_prev_minutes": 30,
+          "notes": "High speed train to Kyoto Station"
+        },
+        {
+          "slot_id": "d3_s2",
+          "time_of_day": "afternoon",
+          "activity_id": "act_kyoto_01",
+          "activity_name": "Fushimi Inari Shrine Early Visit",
+          "travel_time_from_prev_minutes": 15,
+          "notes": "Hike torii gates"
+        }
+      ]
+    },
+    {
+      "day_number": 4,
+      "city": "Kyoto",
+      "slots": [
+        {
+          "slot_id": "d4_s1",
+          "time_of_day": "morning",
+          "activity_id": "act_kyoto_02",
+          "activity_name": "Arashiyama Bamboo Grove & Tenryu-ji",
+          "travel_time_from_prev_minutes": 40,
+          "notes": "Morning bamboo grove walk"
+        }
+      ]
+    },
+    {
+      "day_number": 5,
+      "city": "Kyoto",
+      "slots": [
+        {
+          "slot_id": "d5_s1",
+          "time_of_day": "morning",
+          "activity_id": null,
+          "activity_name": "Gion Souvenir Shopping & Departure",
+          "travel_time_from_prev_minutes": 10,
+          "notes": "Wrap up trip and head to Kansai Airport / Shinkansen return"
+        }
+      ]
+    }
+  ],
+  "budget_breakdown": {
+    "per_category_totals": {
+      "lodging": 640.0,
+      "transport": 260.0,
+      "food": 500.0,
+      "activities": 150.0
+    },
+    "total_estimated_spend": 1550.0,
+    "within_budget": true,
+    "violations": [],
+    "suggested_swaps": []
+  },
+  "draft_itinerary": {
+    "constraints": {
+      "destination_region": "Japan",
+      "cities": ["Tokyo", "Kyoto"],
+      "duration_days": 5,
+      "budget_total": 3000.0,
+      "currency": "USD",
+      "preferences": ["temples", "ramen", "neighborhood strolls"],
+      "avoidances": ["extreme rush hour", "overly crowded tourist traps"],
+      "hard_requirements": ["visit Fushimi Inari", "stay in central neighborhoods"],
+      "soft_preferences": ["try matcha tea ceremony"]
+    },
+    "day_by_day": [
+      {
+        "day_number": 1,
+        "city": "Tokyo",
+        "slots": [
+          {
+            "slot_id": "d1_s1",
+            "time_of_day": "afternoon",
+            "activity_id": "act_tokyo_01",
+            "activity_name": "Senso-ji Temple & Asakusa Stroll",
+            "travel_time_from_prev_minutes": 0,
+            "notes": "Check in to Asakusa hotel and stroll around Senso-ji"
+          }
+        ]
+      }
+    ],
+    "lodging_plan": {
+      "nights_per_city": { "Tokyo": 2, "Kyoto": 2 },
+      "suggested_neighborhoods": { "Tokyo": ["Asakusa"], "Kyoto": ["Gion"] },
+      "options": [
+        {
+          "id": "lodg_tokyo_01",
+          "city": "Tokyo",
+          "neighborhood": "Asakusa",
+          "name": "Asakusa Hotel",
+          "estimated_cost_per_night": 140.0,
+          "currency": "USD"
+        }
+      ]
+    },
+    "movement_plan": {
+      "inter_city_mode": "Shinkansen",
+      "transfers": []
+    },
+    "budget_summary": {
+      "per_category_totals": { "lodging": 640.0, "transport": 260.0 },
+      "total_estimated_spend": 1550.0,
+      "within_budget": true,
+      "violations": [],
+      "suggested_swaps": []
+    },
+    "narrative_summary": "A 5-day journey through Tokyo and Kyoto balancing historic temples and culinary delights within budget."
+  },
+  "review_report": {
+    "checklist": {
+      "days_match": true,
+      "cities_included": true,
+      "within_budget": true,
+      "preferences_met": true,
+      "crowd_avoidance_effort": true,
+      "logistics_realism": true
+    },
+    "issues": [],
+    "passed": true
+  },
+  "repair_hints": {
+    "target_agent": "budget",
+    "suggestions": ["Trim luxury dining option to stay under $1500 if requested"],
+    "action_type": "trim_cost"
+  }
+}
