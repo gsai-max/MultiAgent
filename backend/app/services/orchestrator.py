@@ -27,7 +27,7 @@ from backend.app.tools.router import ToolRouter
 logger = logging.getLogger("ai_travel_planner.services.orchestrator")
 
 
-AGENT_TIMEOUT_SECONDS = 15.0
+AGENT_TIMEOUT_SECONDS = 60.0
 
 class OrchestratorService:
     """Orchestrator Service (Part B & C) responsible for parallel worker execution, itinerary merging, quality review, & repair loops."""
