@@ -27,4 +27,5 @@ dist/
 .vscode/
 .idea/
 .DS_Store
-Thumbs.db
+# Runtime Storage Data
+backend/data/
